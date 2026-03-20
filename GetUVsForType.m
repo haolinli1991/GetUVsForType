@@ -62,7 +62,7 @@ DimSelect[model_,verts_,dimop_]:=Module[{nprop,nfprop,dcp,dim},
 nprop=Length[verts[[2]]];
 nfprop=Count[verts[[2]],{__,j_/;!IntegerQ[j]}];
 dcp=DimCoupling@@@(GetHelandSpin[SMEFT,#]&/@verts[[1]]);
-dim=Total[dcp]+2nfprop-nfprop;
+dim=Total[dcp]+2nprop-nfprop;
 {dimop-dim>=4,dcp}]
 
 
