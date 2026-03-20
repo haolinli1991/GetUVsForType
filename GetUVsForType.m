@@ -123,7 +123,7 @@ result=KeyValueMap[<|"New Fields"->#1,"Vertices List"->#2|>&,#]&/@result;
 (*Label the non-renormalizable vertex in Red color*)
 result=MapAt[If[GetHelorSpin[model,#]<=0,#,Style[#,Red]]&,result,{All,All,2,All,All}];
 result=<|"basis"->Association@MapThread[Rule[#1,#2]&,{Range[lenfbasis],BasisDeSym/.Rule[x1_,y1_]:>{x1,y1}}],"UVs"->result|>;
-If[OptionValue[OneFlavor],
+If[OptionValue[OneFlavor]&&containrepeat,
 result["basis"]=Select[result["basis"],FreeQ[Length/@#[[1,1;;,2]],2]&];
 result["UVs"]=KeyDrop[result["UVs"],Complement[Range[lenfbasis],Keys@result["basis"]]];
 ];
